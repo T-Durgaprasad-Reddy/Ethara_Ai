@@ -4,6 +4,8 @@
   "private": true,
   "description": "Ethara AI Monorepo",
   "scripts": {
+    "start": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
     "install:frontend": "cd frontend && npm install",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && ./mvnw spring-boot:run"
