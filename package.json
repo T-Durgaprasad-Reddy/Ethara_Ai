@@ -1,15 +1,28 @@
 {
-  "name": "ethara-ai",
+  "name": "ethara-ai-monorepo",
   "version": "1.0.0",
   "private": true,
   "description": "Ethara AI Monorepo",
   "dependencies": {
+    "axios": "^1.15.2",
+    "jwt-decode": "^4.0.0",
+    "lucide-react": "^1.14.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.2",
     "vite": "^8.0.10"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.4",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.13",
+    "tailwindcss": "^4.2.4"
   },
   "scripts": {
     "start": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
-    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm install && cd frontend && npm install",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && ./mvnw spring-boot:run"
   }
