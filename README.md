@@ -301,7 +301,7 @@ npm install
 
 ---
 
-## ▶️ Running the Application
+## ▶️ Running Locally
 
 ### Start Backend (Terminal 1)
 ```bash
@@ -316,6 +316,32 @@ cd frontend
 npm run dev
 ```
 > Frontend starts on **http://localhost:5173**
+
+---
+
+## ☁️ Deployment Guide
+
+### Deploy Backend & Database to Railway
+1. Create a free account at [Railway.app](https://railway.app/).
+2. Click **New Project** → **Provision MySQL**. This will create your cloud database.
+3. Once the database is ready, click **New** → **GitHub Repo** and select your Ethara_Ai repository.
+4. **Important Config**: Since this is a monorepo, go to the Settings of the newly created service. Under **Root Directory**, set it to `/backend`.
+5. Under the **Variables** tab for your backend service, add the following variables by referencing your MySQL service variables:
+   - `MYSQL_URL` : `jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}`
+   - `MYSQLUSER` : `${MYSQLUSER}`
+   - `MYSQLPASSWORD` : `${MYSQLPASSWORD}`
+   - `PORT` : `8081`
+6. Railway will automatically detect the `Dockerfile` in the `/backend` folder and deploy your Spring Boot app!
+7. Once deployed, go to the **Settings** tab and generate a **Public Domain** (e.g., `ethara-backend.up.railway.app`).
+
+### Deploy Frontend to Vercel
+1. Create a free account at [Vercel.com](https://vercel.com/).
+2. Click **Add New Project** and import your Ethara_Ai GitHub repository.
+3. Set the **Root Directory** to `frontend`.
+4. Framework Preset should automatically detect **Vite**.
+5. Under **Environment Variables**, add:
+   - `VITE_API_URL` : `https://<YOUR-RAILWAY-BACKEND-DOMAIN>/api` (Replace with your actual Railway domain from above).
+6. Click **Deploy**. Your React frontend will be live in seconds!
 
 ### Quick Test Flow
 1. Open **http://localhost:5173**
