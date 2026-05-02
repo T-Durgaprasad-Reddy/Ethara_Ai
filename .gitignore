@@ -1,0 +1,28 @@
+# Build directories
+backend/target/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Maven
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/.mvn/wrapper/maven-wrapper.properties
+backend/mvnw
+backend/mvnw.cmd
+apache-maven-*/
+maven.zip
+
+# IDEs and OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Logs
+*.log
+backend/logs/
+
+# Env files
+frontend/.env
+frontend/.env.local
+backend/src/main/resources/application-local.properties
