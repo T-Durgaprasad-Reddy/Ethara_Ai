@@ -1,0 +1,11 @@
+{
+  "name": "ethara-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ethara AI Monorepo",
+  "scripts": {
+    "install:frontend": "cd frontend && npm install",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && ./mvnw spring-boot:run"
+  }
+}
