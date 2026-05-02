@@ -321,27 +321,29 @@ npm run dev
 
 ## ☁️ Deployment Guide
 
-### Deploy Backend & Database to Railway
-1. Create a free account at [Railway.app](https://railway.app/).
-2. Click **New Project** → **Provision MySQL**. This will create your cloud database.
-3. Once the database is ready, click **New** → **GitHub Repo** and select your Ethara_Ai repository.
-4. **Important Config**: Since this is a monorepo, go to the Settings of the newly created service. Under **Root Directory**, set it to `/backend`.
-5. Under the **Variables** tab for your backend service, add the following variables by referencing your MySQL service variables:
-   - `MYSQL_URL` : `jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}`
-   - `MYSQLUSER` : `${MYSQLUSER}`
-   - `MYSQLPASSWORD` : `${MYSQLPASSWORD}`
+### Deploy Backend to Render
+1. Create a free account at [Render.com](https://render.com/).
+2. Click **New +** → **Web Service**.
+3. Select your `Ethara_Ai` GitHub repository.
+4. **Important Config**: 
+   - **Name**: `ethara-backend`
+   - **Root Directory**: `backend`
+   - **Runtime**: `Java` (Render will detect Maven and `pom.xml`)
+5. Under **Environment Variables**, add:
+   - `MYSQL_URL` : `jdbc:mysql://<your-db-host>:<port>/<db-name>`
+   - `MYSQLUSER` : `<db-user>`
+   - `MYSQLPASSWORD` : `<db-password>`
    - `PORT` : `8081`
-6. Railway will automatically detect the `Dockerfile` in the `/backend` folder and deploy your Spring Boot app!
-7. Once deployed, go to the **Settings** tab and generate a **Public Domain** (e.g., `ethara-backend.up.railway.app`).
+6. Click **Create Web Service**.
+7. Once deployed, copy your backend URL (e.g., `https://ethara-ai-3.onrender.com`).
 
 ### Deploy Frontend to Vercel
 1. Create a free account at [Vercel.com](https://vercel.com/).
-2. Click **Add New Project** and import your Ethara_Ai GitHub repository.
+2. Click **Add New Project** and import your GitHub repository.
 3. Set the **Root Directory** to `frontend`.
-4. Framework Preset should automatically detect **Vite**.
-5. Under **Environment Variables**, add:
-   - `VITE_API_URL` : `https://<YOUR-RAILWAY-BACKEND-DOMAIN>/api` (Replace with your actual Railway domain from above).
-6. Click **Deploy**. Your React frontend will be live in seconds!
+4. Under **Environment Variables**, add:
+   - `VITE_API_URL` : `https://ethara-ai-3.onrender.com/api` (Replace with your actual backend URL).
+5. Click **Deploy**. Your React frontend will be live in seconds!
 
 ### Quick Test Flow
 1. Open **http://localhost:5173**
